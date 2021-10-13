@@ -6,17 +6,29 @@ const registerValidation = (data) => {
     {
       name: Joi.string().min(6).max(255).required(),
       email: Joi.string().min(6).max(255).required(),
-      password: Joi.string().min(6).max(255).required(),
+      password: Joi.string().min(6).max(255).required()
     }
   );
   return schema.validate(data);
 }
 
 // validating login
+const loginValidation = (data) => {
+  const schema = Joi.object(
+    {
+      email: Joi.string().min(6).max(255).required(),
+      password: Joi.string().min(6).max(255).required()
+    }
+  );
+  return schema.validate(data);
+}
+
 
 // logic to verify our token (JWT)
 
 
 module.exports = {
-  registerValidation
+  registerValidation,
+  loginValidation
 };
+

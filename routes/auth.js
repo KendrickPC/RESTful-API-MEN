@@ -46,7 +46,34 @@ router.post("/register", async (req, res) => {
 
 // /login
 router.post("/login", async (req, res) => {
-  // do something
+  // validate user login info
+  const { error } = loginValidation(req.body);
+  
+  if (error) {
+    return res.status(400).json({ error: error.details[0].message })
+  }
+  
+  // If login is valid, find the user
+  const user = await User.findOne({ email: req.body.email });
+  
+  // throw error if email is wrong (user does not exist in DB)f
+  if (!user) {
+    return res.status(400).json({ error: "Email is wrong" });
+  }
+
+  // user exists - check for password correctness
+  const validPassword = await bcrypt.compare(req.body.password, user.password)
+  
+  // throw error if password is wrong
+  if (!validPassword) {
+    return res.status(400).json({ error: "Password is WRONG!"})
+  }
+
+  // create authentication token with username and id
+
+  // attach auth token to header
+
+  
   return res.status(200).json({
     msg: "Login ROUTE..."
   })
