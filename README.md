@@ -4,8 +4,8 @@
 
 2. npm install mongodb express mongoose dotenv-flow body-parser cross-env  
 
+3. npm run start-dev 
 
 TO DO: 
-
 
 AUTH- USER MODEL
