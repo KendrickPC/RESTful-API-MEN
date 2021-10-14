@@ -13,3 +13,8 @@ AUTH- USER MODEL
 
 
 http://localhost:4000/api/docs/
+
+
+### Finishing Up Task Lists:
+October 14, 2021:
+[] ALLOW CRUD operations on USER CARTS
