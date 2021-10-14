@@ -9,3 +9,7 @@
 TO DO: 
 
 AUTH- USER MODEL
+
+
+
+http://localhost:4000/api/docs/

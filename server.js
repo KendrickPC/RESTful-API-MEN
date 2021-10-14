@@ -3,6 +3,14 @@ const mongoose = require("mongoose")
 const bodyParser = require("body-parser")
 const app = express();
 
+// swagger dependencies
+const swaggerUi = require('swagger-ui-express');
+const yaml = require('yamljs')
+
+// setup swagger
+const swaggerDefinition = yaml.load('./swagger.yaml')
+app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(swaggerDefinition))
+
 // import routes
 const productRoutes = require("./routes/product")
 const authRoutes = require("./routes/auth")
@@ -11,9 +19,6 @@ require("dotenv-flow").config();
 
 // parse request of content-type JSON
 app.use(bodyParser.json());
-
-
-
  
 mongoose.connect(
   process.env.DBHOST,
