@@ -206,7 +206,7 @@ paths:
 
       responses:
         201:
-          description: Product deleted succesfully
+          description: Product deleted successfully
           content:
             application/json:
               schema:
@@ -294,4 +294,25 @@ paths:
               schema:
                 $ref: "#/components/schemas/Cart"
 
-    
+    delete:
+      summary: Delete a specific cart item
+      description: Deletes a specific cart item based on its id
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: MongoDB id
+          schema:
+            type: string
+      
+      responses:
+        201:
+          description: Cart item delete successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Cart"
+
+
+
+            

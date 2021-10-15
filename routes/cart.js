@@ -41,6 +41,20 @@ router.put("/:id", (req, res) => {
   .catch(err => { res.status(500).send( { message: "Error updating product with id=" + id }); }) 
 })
 
-// Delete cart
+// Delete specific cart item
+router.delete("/:id", (req, res) => {
+  const id = req.params.id; 
+
+  cart.findByIdAndDelete(id)
+  .then(data => {
+    if (!data) {
+      res.status(404).send({ message: "Cannot delete cart item with id=" + id + ". Maybe cart item was not found!"})
+    } else {
+      res.send( {message: "Cart item was successfully deleted."} )
+    }
+  })
+  .catch(err => { res.status(500).send( { message: "Error deleting cart item with id=" + id }); }) 
+})
 
 module.exports = router;
+
