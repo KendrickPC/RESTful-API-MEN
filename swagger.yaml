@@ -252,6 +252,8 @@ paths:
     get:
       summary: Specific Cart Item
       description: Retrieves a specific Cart item based on it id.
+      security:
+        - ApiKeyAuth: []  
       parameters:
         - in: path
           name: id
@@ -272,6 +274,8 @@ paths:
     put:
       summary: Updates a specific Cart item
       description: Updated a specific Cart item based on its id
+      security:
+        - ApiKeyAuth: []
       parameters:
         - in: path
           name: id
@@ -297,6 +301,8 @@ paths:
     delete:
       summary: Delete a specific cart item
       description: Deletes a specific cart item based on its id
+      security:
+        - ApiKeyAuth: []  
       parameters:
         - in: path
           name: id

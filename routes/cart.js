@@ -4,7 +4,7 @@ const { verifyToken } = require("../validation");
 
 // /api/cart
 // Create an item into cart
-router.post("/", (req, res) => {
+router.post("/", verifyToken, (req, res) => {
   data = req.body;
   cart.insertMany(data)
   .then(data => { res.send(data); })
@@ -20,14 +20,14 @@ router.get("/", (req, res) => {
 })
 
 // Read specific cart item -- get 
-router.get("/:id", (req, res) => {
+router.get("/:id", verifyToken, (req, res) => {
   cart.findById(req.params.id)
   .then(data => { res.send(data); })
   .catch(err => { res.status(500).send( { message: err.message }); }) 
 })
 
 // Update cart
-router.put("/:id", (req, res) => {
+router.put("/:id", verifyToken, (req, res) => {
   const id = req.params.id; 
 
   cart.findByIdAndUpdate(id, req.body)
@@ -42,7 +42,7 @@ router.put("/:id", (req, res) => {
 })
 
 // Delete specific cart item
-router.delete("/:id", (req, res) => {
+router.delete("/:id", verifyToken, (req, res) => {
   const id = req.params.id; 
 
   cart.findByIdAndDelete(id)
