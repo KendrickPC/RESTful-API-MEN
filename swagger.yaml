@@ -351,7 +351,7 @@ paths:
               $ref: "#/components/schemas/Order"
 
     get:
-      summary: Retrieves a list of all orders
+      summary: Retrieves a list of ALL orders
       description: Retrieves a list of all orders as a JSON objects.
       responses:
         200:
@@ -362,4 +362,74 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/Order"
+
+  /order/{id}:
+    get:
+      summary: Get Specific Order Item
+      description: Retrieves a specific Order item based on its id.
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: MongoDB id
+          schema:
+            type: string
+      responses:
+        200:
+          description: An order item in the format of a JSON object.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Order"
+
+    put:
+      summary: Updates a specific Order item
+      description: Updated a specific Order item based on its id
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: MongoDB id
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Order"
+
+      responses:
+        201:
+          description: Order item updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Order"
+
+    delete:
+      summary: Delete a specific order item
+      description: Deletes a specific order item based on its id
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: MongoDB id
+          schema:
+            type: string
+      
+      responses:
+        201:
+          description: Order item delete successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Order"
+
+
+
+
+
 
