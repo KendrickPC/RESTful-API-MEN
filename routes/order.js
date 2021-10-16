@@ -11,4 +11,12 @@ router.post("/", (req, res) => {
   .catch(err => { res.status(500).send( { message: err.message}); })
 })
 
+// /api/order
+// Get ALL order items
+router.get("/", (req, res) => {
+  order.find()
+  .then(data => { res.send(data); })
+  .catch(err => { res.status(500).send( {send: err.message}); })
+})
+
 module.exports = router;

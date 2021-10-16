@@ -350,4 +350,16 @@ paths:
               schema:
               $ref: "#/components/schemas/Order"
 
-            
+    get:
+      summary: Retrieves a list of all orders
+      description: Retrieves a list of all orders as a JSON objects.
+      responses:
+        200:
+          description: A list of all orders JSON objects in an array.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Order"
+
