@@ -15,6 +15,7 @@ app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(swaggerDefinition))
 const productRoutes = require("./routes/product")
 const authRoutes = require("./routes/auth")
 const cartRoutes = require("./routes/cart")
+const orderRoutes = require("./routes/order")
 
 require("dotenv-flow").config();
 
@@ -36,6 +37,7 @@ mongoose.connection.once('open', () => console.log('Connected successfully to Mo
 app.use("/api/products", productRoutes)
 app.use("/api/user", authRoutes)
 app.use("/api/cart", cartRoutes)
+app.use("/api/order", orderRoutes)
 
 const PORT = process.env.PORT || 4000;
 
